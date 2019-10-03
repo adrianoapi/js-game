@@ -55,7 +55,7 @@
             monsterImage.onload = function () {
                 monsterReady = true;
             };
-            monsterImage.src = "images/monster_sheet.png";
+            monsterImage.src = "images/monster2_sheet.png";
 
             // Game objects
             var hero = {
@@ -194,33 +194,13 @@
                     }
                 }
 
-                var d = monster.direction;
-                if (d.x == 0 && d.y == -1) {
-                    monster.animSet = 0;
-                    fire.animSet = 0;
-                } else if (d.x == 1 && d.y == -1) {
-                    monster.animSet = 1;
-                    fire.animSet = 1;
-                } else if (d.x == 1 && d.y == 0) {
+                if (monster.direction === 'right') {
                     monster.animSet = 2;
-                    fire.animSet = 2;
-                } else if (d.x == 1 && d.y == 1) {
-                    monster.animSet = 3;
-                    fire.animSet = 3;
-                } else if (d.x == 0 && d.y == 1) {
-                    monster.animSet = 4;
-                    fire.animSet = 4;
-                } else if (d.x == -1 && d.y == 1) {
-                    monster.animSet = 5;
-                    fire.animSet = 5;
-                } else if (d.x == -1 && d.y == 0) {
+                    fire.animSet = 0;
+                } else {
                     monster.animSet = 6;
-                    fire.animSet = 6;
-                } else if (d.x == -1 && d.y == -1) {
-                    monster.animSet = 7;
-                    fire.animSet = 7;
+                    fire.animSet = 1;
                 }
-
                 if (
                         monster.x > canvas.width ||
                         monster.x < 0 ||
@@ -228,7 +208,7 @@
                         monster.y < 0
                         ) {
                     reset();
-                } else if (monster.direction === 'right') {
+                } else if (monster.direction == 'right') {
                     monster.x += 1;
                 } else {
                     monster.x -= 1;
@@ -286,11 +266,11 @@
                         && monster.y <= (hero.y + 64)
                         ) {
                     if (monster.direction === "right") {
-                        monster.x += 1.5;
-                        monster.y += 1.5;
+                        monster.x += 0.5;
+                        monster.y += 0.5;
                     } else {
-                        monster.x -= 1.5;
-                        monster.y -= 1.5;
+                        monster.x -= 0.5;
+                        monster.y -= 0.5;
                     }
                 }
 
