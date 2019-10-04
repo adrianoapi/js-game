@@ -110,7 +110,7 @@
                 animTimer: 0
             };
             var monstersCaught = 0;
-            var lifeHero = 100;
+            var lifeHero = 196;
 
             hero.x = (canvas.width / 2 - hero.width / 2);
             hero.y = (canvas.height / 2 - hero.height / 2);
@@ -375,7 +375,27 @@
                 ctx.textAlign = "left";
                 ctx.textBaseline = "top";
                 ctx.fillText("Goblins caught: [" + monstersCaught + "]", 180, 0);
-                ctx.fillText("Life: [" + lifeHero + "]", 32, 0);
+                //ctx.fillText("Life: [" + lifeHero + "]", 320, 0);
+
+                var life = -148 + lifeHero + 100;
+                ctx.fillStyle = "#000000";
+                ctx.fillRect(10, 10, 152, 20);
+                ctx.fillStyle = "#32CD32";
+                ctx.fillRect(12, 12, life, 16);
+
+                if(life <= 93){
+                    ctx.fillStyle = "#FFA500";
+                    ctx.fillRect(12, 12, life, 16);
+                }
+                if(life <= 30 ){
+                    ctx.fillStyle = "#FF4500";
+                    ctx.fillRect(12, 12, life, 16);
+                }
+                if(life <= 1){
+                    alert('Game Over');
+                    location.reload();
+                }
+                
             };
 
             // The main game loop
