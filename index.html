@@ -73,7 +73,19 @@
                 animFrame: 2,
                 animNumFrames: 2,
                 animDelay: 200,
-                animTimer: 0
+                animTimer: 0,
+				lifeColor: function(life) {
+					if(life <= 160 && life > 140){
+						return "#FFA500";
+					}else if(life <= 140 && life > 100 ){
+						return "#FF9933";
+					}else if(life <= 100 ){
+						console.log('FF3300');
+						return "#FF3300";
+					}else{
+						return "#32CD32";
+					}
+				}
             };
             var monster = {
                 x: 0,
@@ -380,26 +392,14 @@
                 var life = -148 + lifeHero + 100;
                 ctx.fillStyle = "#000000";
                 ctx.fillRect(10, 10, 152, 20);
-                ctx.fillStyle = "#32CD32";
+                ctx.fillStyle = hero.lifeColor(lifeHero);
                 ctx.fillRect(12, 12, life, 16);
-
-                if(life <= 93){
-                    ctx.fillStyle = "#FFA500";
-                    ctx.fillRect(12, 12, life, 16);
-                }
 				
-                if(life <= 50 ){
-                    ctx.fillStyle = "#FF9933";
-                    ctx.fillRect(12, 12, life, 16);
-                }
-				if(life <= 30 ){
-                    ctx.fillStyle = "#FF4500";
-                    ctx.fillRect(12, 12, life, 16);
-                }
-                if(life <= 1){
+				if(life <= 1){
                     alert('Game Over');
                     location.reload();
-                }
+				}
+
                 
             };
 
@@ -415,7 +415,7 @@
                 render();
 
 
-
+			
 
 
                 then = now;
