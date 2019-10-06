@@ -9,6 +9,27 @@
         <!--link: http://www.lostdecadegames.com/how-to-make-a-simple-html5-canvas-game/-->
 
         <script>
+		
+		var file = [];
+		for(var i = 0; i < 10; i++){
+			file[i] = fire = {
+                x: 0,
+                y: 0,
+                width: 32,
+                height: 32,
+                speed: 200,
+                direction: {
+                    x: 0,
+                    y: 0
+                },
+                // Animation settings
+                animSet: 1,
+                animFrame: 20,
+                animNumFrames: 5,
+                animDelay: 200,
+                animTimer: 0
+            };
+		}
 
             addEventListener("keydown", function (e) {
                 keysDown[e.keyCode] = true;
@@ -296,7 +317,7 @@
             var reset = function () {
 
                 //fire position
-				var arrayFogo = [fireTwo, fireNew, fire, fireThree, fireFor, fireFive, fireSix];
+				var arrayFogo = file;
 				for(var i = 0; i < arrayFogo.length; i++){
 					arrayFogo[i].x = 32 + (Math.random() * (canvas.width - 64));
 					arrayFogo[i].y = 32 + (Math.random() * (canvas.height - 64));
@@ -429,7 +450,7 @@
                     }
                 }
 				
-				var arrayFogo = [fireTwo, fireNew, fire, fireThree, fireFor, fireFive, fireSix];
+				var arrayFogo = file;
 				
 				for(var i = 0; i < arrayFogo.length; i++){
 					if (
@@ -495,7 +516,7 @@
                             );
 
                     // Render image to canvas
-					var arrayFogo = [fireTwo, fireNew, fire, fireThree, fireFor, fireFive, fireSix];
+					var arrayFogo = file;
 					for(var i = 0; i < arrayFogo.length; i++){
 					
 						ctx.drawImage(
