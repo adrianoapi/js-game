@@ -56,6 +56,7 @@
                 monsterReady = true;
             };
             monsterImage.src = "images/monster2_sheet.png";
+			
 
             // Game objects
             var hero = {
@@ -104,6 +105,9 @@
                 animDelay: 200,
                 animTimer: 0
             };
+			
+			
+			
             var fire = {
                 x: 0,
                 y: 0,
@@ -121,6 +125,132 @@
                 animDelay: 200,
                 animTimer: 0
             };
+			
+			var fireFive = {
+                x: 0,
+                y: 0,
+                width: 32,
+                height: 32,
+                speed: 200,
+                direction: {
+                    x: 0,
+                    y: 0
+                },
+                // Animation settings
+                animSet: 1,
+                animFrame: 20,
+                animNumFrames: 5,
+                animDelay: 200,
+                animTimer: 0
+            };
+			
+			var fireFive = {
+                x: 0,
+                y: 0,
+                width: 32,
+                height: 32,
+                speed: 200,
+                direction: {
+                    x: 0,
+                    y: 0
+                },
+                // Animation settings
+                animSet: 1,
+                animFrame: 20,
+                animNumFrames: 5,
+                animDelay: 200,
+                animTimer: 0
+            };
+			
+			var fireSix = {
+                x: 0,
+                y: 0,
+                width: 32,
+                height: 32,
+                speed: 200,
+                direction: {
+                    x: 0,
+                    y: 0
+                },
+                // Animation settings
+                animSet: 1,
+                animFrame: 20,
+                animNumFrames: 5,
+                animDelay: 200,
+                animTimer: 0
+            };
+			
+			var fireNew = {
+                x: 0,
+                y: 0,
+                width: 32,
+                height: 32,
+                speed: 200,
+                direction: {
+                    x: 0,
+                    y: 0
+                },
+                // Animation settings
+                animSet: 1,
+                animFrame: 20,
+                animNumFrames: 5,
+                animDelay: 200,
+                animTimer: 0
+            };
+			
+			var fireTwo = {
+                x: 0,
+                y: 0,
+                width: 32,
+                height: 32,
+                speed: 200,
+                direction: {
+                    x: 0,
+                    y: 0
+                },
+                // Animation settings
+                animSet: 1,
+                animFrame: 20,
+                animNumFrames: 5,
+                animDelay: 200,
+                animTimer: 0
+            };
+			
+			var fireThree = {
+                x: 0,
+                y: 0,
+                width: 32,
+                height: 32,
+                speed: 200,
+                direction: {
+                    x: 0,
+                    y: 0
+                },
+                // Animation settings
+                animSet: 1,
+                animFrame: 20,
+                animNumFrames: 5,
+                animDelay: 200,
+                animTimer: 0
+            };
+			var fireFor = {
+                x: 0,
+                y: 0,
+                width: 32,
+                height: 32,
+                speed: 200,
+                direction: {
+                    x: 0,
+                    y: 0
+                },
+                // Animation settings
+                animSet: 1,
+                animFrame: 20,
+                animNumFrames: 5,
+                animDelay: 200,
+                animTimer: 0
+            };
+			
             var monstersCaught = 0;
             var lifeHero = 196;
 
@@ -166,9 +296,11 @@
             var reset = function () {
 
                 //fire position
-                fire.x = 32 + (Math.random() * (canvas.width - 64));
-                fire.y = 32 + (Math.random() * (canvas.height - 64));
-
+				var arrayFogo = [fireTwo, fireNew, fire, fireThree, fireFor, fireFive, fireSix];
+				for(var i = 0; i < arrayFogo.length; i++){
+					arrayFogo[i].x = 32 + (Math.random() * (canvas.width - 64));
+					arrayFogo[i].y = 32 + (Math.random() * (canvas.height - 64));
+				}
                 //monster position
                 monster.x = 32 + (Math.random() * (canvas.width - 64));
                 monster.y = 32 + (Math.random() * (canvas.height - 64));
@@ -203,6 +335,17 @@
                     if (fire.animFrame >= fire.animNumFrames) {
                         // We've reached the end of the animation frames; rewind
                         fire.animFrame = 0;
+                    }
+                }
+				
+				fireNew.animTimer += modifier;
+                if (fireNew.animTimer >= fireNew.animDelay) {
+                    // Enough time has passed to update the animation frame
+                    fireNew.animTimer = 0; // Reset the animation timer
+                    ++fireNew.animFrame;
+                    if (fireNew.animFrame >= fireNew.animNumFrames) {
+                        // We've reached the end of the animation frames; rewind
+                        fireNew.animFrame = 0;
                     }
                 }
 
@@ -285,6 +428,39 @@
                         monster.y -= 0.5;
                     }
                 }
+				
+				var arrayFogo = [fireTwo, fireNew, fire, fireThree, fireFor, fireFive, fireSix];
+				
+				for(var i = 0; i < arrayFogo.length; i++){
+					if (
+                        hero.x <= (arrayFogo[i].x + 32)
+                        && arrayFogo[i].x <= (hero.x + 32)
+                        && hero.y <= (arrayFogo[i].y + 32)
+                        && arrayFogo[i].y <= (hero.y + 32)
+                        ) {
+						lifeHero -= 1;
+					}
+				}
+				
+				// Monster fire
+				for(var i = 0; i < arrayFogo.length; i++){
+					 if (
+                        arrayFogo[i].x <= (monster.x + 64)
+                        && monster.x <= (arrayFogo[i].x + 64)
+                        && arrayFogo[i].y <= (monster.y + 64)
+                        && monster.y <= (arrayFogo[i].y + 64)
+                        ) {
+						if (monster.direction === "right") {
+							monster.x += 1.5;
+							monster.y += 1.5;
+						} else {
+							monster.x -= 1.5;
+							monster.y -= 1.5;
+						}
+					}
+				}
+				
+				
 
                 if (
                         hero.x <= (monster.x + 32)
@@ -294,15 +470,6 @@
                         ) {
                     ++monstersCaught;
                     reset();
-                }
-
-                if (
-                        hero.x <= (fire.x + 32)
-                        && fire.x <= (hero.x + 32)
-                        && hero.y <= (fire.y + 32)
-                        && fire.y <= (hero.y + 32)
-                        ) {
-                    lifeHero -= 1;
                 }
 
                 if (lifeHero <= 0) {
@@ -328,11 +495,16 @@
                             );
 
                     // Render image to canvas
-                    ctx.drawImage(
+					var arrayFogo = [fireTwo, fireNew, fire, fireThree, fireFor, fireFive, fireSix];
+					for(var i = 0; i < arrayFogo.length; i++){
+					
+						ctx.drawImage(
                             fireImage,
-                            spriteX, 0, fire.width, fire.height,
-                            fire.x, fire.y, fire.width, fire.height
-                            );
+                            spriteX, 0, arrayFogo[i].width, arrayFogo[i].height,
+                            arrayFogo[i].x, arrayFogo[i].y, arrayFogo[i].width, arrayFogo[i].height
+                        );
+						
+					}
 
                 }
 
