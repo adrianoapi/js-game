@@ -9,27 +9,6 @@
         <!--link: http://www.lostdecadegames.com/how-to-make-a-simple-html5-canvas-game/-->
 
         <script>
-		
-		var file = [];
-		for(var i = 0; i < 20; i++){
-			file[i] = fire = {
-                x: 0,
-                y: 0,
-                width: 32,
-                height: 32,
-                speed: 200,
-                direction: {
-                    x: 0,
-                    y: 0
-                },
-                // Animation settings
-                animSet: 1,
-                animFrame: 20,
-                animNumFrames: 5,
-                animDelay: 200,
-                animTimer: 0
-            };
-		}
 
             addEventListener("keydown", function (e) {
                 keysDown[e.keyCode] = true;
@@ -127,7 +106,27 @@
                 animTimer: 0
             };
 			
-			
+		
+            var file = [];
+            for(var i = 0; i < 20; i++){
+                file[i] = fire = {
+                    x: 0,
+                    y: 0,
+                    width: 32,
+                    height: 32,
+                    speed: 200,
+                    direction: {
+                        x: 0,
+                        y: 0
+                    },
+                    // Animation settings
+                    animSet: 1,
+                    animFrame: 20,
+                    animNumFrames: 5,
+                    animDelay: 200,
+                    animTimer: 0
+                };
+            }			
 			
             var fire = {
                 x: 0,
@@ -146,132 +145,7 @@
                 animDelay: 200,
                 animTimer: 0
             };
-			
-			var fireFive = {
-                x: 0,
-                y: 0,
-                width: 32,
-                height: 32,
-                speed: 200,
-                direction: {
-                    x: 0,
-                    y: 0
-                },
-                // Animation settings
-                animSet: 1,
-                animFrame: 20,
-                animNumFrames: 5,
-                animDelay: 200,
-                animTimer: 0
-            };
-			
-			var fireFive = {
-                x: 0,
-                y: 0,
-                width: 32,
-                height: 32,
-                speed: 200,
-                direction: {
-                    x: 0,
-                    y: 0
-                },
-                // Animation settings
-                animSet: 1,
-                animFrame: 20,
-                animNumFrames: 5,
-                animDelay: 200,
-                animTimer: 0
-            };
-			
-			var fireSix = {
-                x: 0,
-                y: 0,
-                width: 32,
-                height: 32,
-                speed: 200,
-                direction: {
-                    x: 0,
-                    y: 0
-                },
-                // Animation settings
-                animSet: 1,
-                animFrame: 20,
-                animNumFrames: 5,
-                animDelay: 200,
-                animTimer: 0
-            };
-			
-			var fireNew = {
-                x: 0,
-                y: 0,
-                width: 32,
-                height: 32,
-                speed: 200,
-                direction: {
-                    x: 0,
-                    y: 0
-                },
-                // Animation settings
-                animSet: 1,
-                animFrame: 20,
-                animNumFrames: 5,
-                animDelay: 200,
-                animTimer: 0
-            };
-			
-			var fireTwo = {
-                x: 0,
-                y: 0,
-                width: 32,
-                height: 32,
-                speed: 200,
-                direction: {
-                    x: 0,
-                    y: 0
-                },
-                // Animation settings
-                animSet: 1,
-                animFrame: 20,
-                animNumFrames: 5,
-                animDelay: 200,
-                animTimer: 0
-            };
-			
-			var fireThree = {
-                x: 0,
-                y: 0,
-                width: 32,
-                height: 32,
-                speed: 200,
-                direction: {
-                    x: 0,
-                    y: 0
-                },
-                // Animation settings
-                animSet: 1,
-                animFrame: 20,
-                animNumFrames: 5,
-                animDelay: 200,
-                animTimer: 0
-            };
-			var fireFor = {
-                x: 0,
-                y: 0,
-                width: 32,
-                height: 32,
-                speed: 200,
-                direction: {
-                    x: 0,
-                    y: 0
-                },
-                // Animation settings
-                animSet: 1,
-                animFrame: 20,
-                animNumFrames: 5,
-                animDelay: 200,
-                animTimer: 0
-            };
-			
+
             var monstersCaught = 0;
             var lifeHero = 196;
 
@@ -356,17 +230,6 @@
                     if (fire.animFrame >= fire.animNumFrames) {
                         // We've reached the end of the animation frames; rewind
                         fire.animFrame = 0;
-                    }
-                }
-				
-				fireNew.animTimer += modifier;
-                if (fireNew.animTimer >= fireNew.animDelay) {
-                    // Enough time has passed to update the animation frame
-                    fireNew.animTimer = 0; // Reset the animation timer
-                    ++fireNew.animFrame;
-                    if (fireNew.animFrame >= fireNew.animNumFrames) {
-                        // We've reached the end of the animation frames; rewind
-                        fireNew.animFrame = 0;
                     }
                 }
 
